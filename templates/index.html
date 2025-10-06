@@ -1,0 +1,75 @@
+html_code = """
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indodax Screener V2</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #333;
+        }
+        th {
+            background-color: #222;
+        }
+        .buy { background-color: #006400; }
+        .wait { background-color: #804000; }
+        .error { background-color: #444; }
+        .timeframe button {
+            margin: 5px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+        }
+        .timeframe button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h2>🚀 Indodax Screener V2</h2>
+    <p>Analisis otomatis Bollinger Band & Volume (real-time)</p>
+
+    <div class="timeframe">
+        <form method="get">
+            <button name="tf" value="15m">15 Menit (Scalping)</button>
+            <button name="tf" value="1h">1 Jam (Swing)</button>
+            <button name="tf" value="4h">4 Jam (Trend Harian)</button>
+        </form>
+    </div>
+
+    <table>
+        <tr><th>Pair</th><th>Harga (IDR)</th><th>Volume (IDR)</th><th>Sinyal</th></tr>
+        {% for pair, price, vol, signal in rows %}
+        <tr class="{% if 'Buy' in signal %}buy{% elif 'Wait' in signal %}wait{% else %}error{% endif %}">
+            <td>{{ pair }}</td>
+            <td>{{ price }}</td>
+            <td>{{ vol }}</td>
+            <td>{{ signal }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <p style="margin-top:20px;">⏱️ Auto-refresh setiap 5 menit</p>
+
+    <script>
+        setTimeout(() => { window.location.reload(); }, 300000);
+    </script>
+</body>
+</html>
