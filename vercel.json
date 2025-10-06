@@ -2,12 +2,12 @@
 
 
   "builds": [
-    { "src": "app.py", "use": "@vercel/python",
+    { 
      "src": "index.py", "use": "@vercel/python"
     }
   ],
   "routes": [
-    { "src": "/home", "dest": "app.py",
-    "src":"/scalping","dest":"index.py"}
+    {
+    "src":"/(.*)","dest":"index.py"}
   ]
 }
