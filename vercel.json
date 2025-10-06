@@ -7,7 +7,7 @@
     }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "app.py",
+    { "src": "/home", "dest": "app.py",
     "src":"/scalping","dest":"index.py"}
   ]
 }
