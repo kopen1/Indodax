@@ -3,14 +3,12 @@
  "functions": {
     "scalping/api/index.py": {
       "runtime": "python3.11"
-    }
-  "rewrites": [
-    { "source": "/scalping", "destination": "/scalping/api/index.py" }
-  ],
+    },
   "builds": [
     { "src": "app.py", "use": "@vercel/python"}
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "app.py"}
+    { "src": "/(.*)", "dest": "app.py",
+    "src":"/scalping","dest":"scalping/api/index.py"}
   ]
 }
