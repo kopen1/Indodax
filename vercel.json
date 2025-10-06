@@ -1,14 +1,13 @@
 {
 
 
+  rewrites": [
+    { "source": "/Scalping", "destination": "/Scalping/api/index.py" },
+  ],
   "builds": [
-    { "src": "app.py", "use": "@vercel/python",
-      "src": "Scalping/api/index.py", "use": "@vercel/python",
-    }
+    { "src": "app.py", "use": "@vercel/python"}
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "app.py",
-      "src": "/scalping/api/index.py", "dest": "index.py",
-    }
+    { "src": "/(.*)", "dest": "app.py"}
   ]
 }
