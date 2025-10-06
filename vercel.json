@@ -1,8 +1,8 @@
 {
 
 
-  rewrites": [
-    { "source": "/Scalping", "destination": "/Scalping/api/index.py" },
+  "rewrites": [
+    { "source": "/Scalping", "destination": "/Scalping/api/index.py" }
   ],
   "builds": [
     { "src": "app.py", "use": "@vercel/python"}
